@@ -27,12 +27,14 @@ describe('Login/Logout test',  ()=>{
         cy.get("@data_user").then(dataUser=>{
             cy.getLoginPage()
         cy.loginStep(dataUser.username[0], dataUser.password[0])
+
+        cy.get(':nth-child(3) > .dropdown-toggle').should('contain', dataUser.username[0])
         })
         
         cy.log('Assertion Successfull Login')
         cy.url().should('include', "/bank/account-summary.html")
         // cy.get('.dropdown-toggle').should('contain', dataUser.username[0] )
-        cy.get(':nth-child(3) > .dropdown-toggle').should('contain', dataUser.username[0])
+        
     });
 
     it('Should logout', () => {
@@ -40,5 +42,10 @@ describe('Login/Logout test',  ()=>{
             cy.getLoginPage()
         cy.loginStep(dataUser.username[0], dataUser.password[0])
         })
+        cy.get(':nth-child(3) > .dropdown-toggle').click()
+        cy.get('#logout_link').click()
+
+        cy.log('Assertion Logout Successfull')
+        cy.url().should('contain', "index.html")
     });
 })
