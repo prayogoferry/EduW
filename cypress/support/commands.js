@@ -23,3 +23,21 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('load_dataUser',()=>{
+    cy.fixture("user").as('data_user')
+})
+
+Cypress.Commands.add('getLoginPage',()=>{
+    cy.visit('http://zero.webappsecurity.com/index.html')
+    cy.url().should('include', 'index.html')
+    cy.get('#signin_button').click()
+    cy.url().should('include', "login.html")
+})
+
+Cypress.Commands.add('loginStep',(username, password)=>{
+    cy.get('#login_form').should('be.visible')
+    cy.get('#user_login').type(username)
+    cy.get('#user_password').type(password)
+    cy.get('.btn').click()
+})
