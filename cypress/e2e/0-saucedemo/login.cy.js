@@ -4,4 +4,8 @@ describe('LoginPage', ()=>{
     beforeEach(()=>{
         cy.visit('https://www.saucedemo.com/')
     })
+
+    it('Login with', () => {
+        
+    });
 })
