@@ -13,6 +13,7 @@ describe('SearchBox test',()=>{
         // cy.get('h2').should('contain.text', "Search Results")
     });
     it('Should show result page', () => {
+        cy.get('.brand').should('be.visible')
         cy.get('h2').should('contain.text', "Search Results")
     });
 
