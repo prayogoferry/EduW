@@ -16,6 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 import './saucedemo'
+import './katalon_demo'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
